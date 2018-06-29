@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <param name="serial_port" value="ttyACM0"/>   <!-- in case of CMSU, change to "ttyUSB0" -->
+  <param name="can_id" value="1"/>
+  <param name="controller_rate" value="20"  />
+  <node name="controller_node" pkg="trx_s_ros_pkg" type="controller_node.py"/>
+
+	<arg name="model" default="$(find trx_s_ros_pkg)/urdf/trx_s.urdf"/>
+	<arg name="gui" default="False" />
+	<param name="robot_description" textfile="$(arg model)" />
+	<param name="use_gui" value="$(arg gui)"/>
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find trx_s_ros_pkg)/trx_s.rviz" required="true" />
+</launch>
