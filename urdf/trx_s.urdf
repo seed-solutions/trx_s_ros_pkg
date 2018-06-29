@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<robot name="trx_s">
+
+<!-- hand -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://trx_s_ros_pkg/urdf/meshes/hand.DAE"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </visual>
+  </link>
+<!-- hand index base -->
+  <link name="indexbase_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://trx_s_ros_pkg/urdf/meshes/index_base.DAE"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 -0 0 "/>
+    </visual>
+  </link>
+  <joint name="indexbase_joint" type="continuous">
+    <parent link="base_link"/>
+    <child  link="indexbase_link"/>
+    <origin xyz="-0.013 0 0.087" rpy="0 -0 0 "/>
+    <axis   xyz="0 1 0"/>
+  </joint>
+<!-- hand index middle -->
+  <link name="indexmid_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://trx_s_ros_pkg/urdf/meshes/index_mid.DAE"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </visual>
+  </link>
+  <joint name="indexmid_joint" type="continuous">
+    <parent link="indexbase_link"/>
+    <child  link="indexmid_link"/>
+    <origin xyz="0 0 0.045" rpy="0 0.52 0 "/>
+    <axis   xyz="0 1 0"/>
+  </joint>
+<!-- hand index end -->
+  <link name="indexend_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://trx_s_ros_pkg/urdf/meshes/index_end.DAE"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </visual>
+  </link>
+  <joint name="indexend_joint" type="continuous">
+    <parent link="indexmid_link"/>
+    <child  link="indexend_link"/>
+    <origin xyz="-0.005 0 0.025" rpy="0 -1.13 0 "/>
+    <axis   xyz="0 1 0"/>
+  </joint>
+<!-- hand finger -->
+  <link name="thumb_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://trx_s_ros_pkg/urdf/meshes/thumb.DAE"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0 "/>
+    </visual>
+  </link>
+  <joint name="thumb_joint" type="continuous">
+    <parent  link="base_link"/>
+    <child  link="thumb_link"/>
+    <origin xyz="0.023 0 0.054" rpy="0 -0.08 0 "/>
+    <axis   xyz="0 1 0"/>
+  </joint>
+
+</robot>
+
