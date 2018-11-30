@@ -22,7 +22,7 @@ rosservice call /hand_controller grasp
 ```  
 open  
 ```
-rosservice call /hand_controller grasp
+rosservice call /hand_controller open
 ```  
 
 ### Parameters (written in the bringup.launch)
